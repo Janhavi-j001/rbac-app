@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { loginUser } from "../../utils/auth";
 
 const Login = () => {
@@ -10,10 +11,10 @@ const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     if (loginUser(email, password)) {
-      alert("Login successful!");
+      toast.success("Login successful!");
       navigate("/dashboard");
     } else {
-      alert("Invalid credentials. Please try again.");
+      toast.error("Invalid credentials. Please try again.");
     }
   };
 
@@ -49,15 +50,6 @@ const Login = () => {
             Login
           </button>
         </form>
-        <p className="text-center mt-4 text-gray-600">
-          Don't have an account?{" "}
-          <span
-            onClick={() => navigate("/signup")}
-            className="text-blue-500 cursor-pointer hover:underline"
-          >
-            Signup here
-          </span>
-        </p>
       </div>
     </div>
   );

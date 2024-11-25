@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
@@ -6,29 +7,24 @@ const Projects = () => {
 
   const handleAddProject = (e) => {
     e.preventDefault();
-
-    // Prevent adding empty project names
     if (projectName.trim() === "") {
-      alert("Project name cannot be empty.");
+      toast.error("Project name cannot be empty.");
       return;
     }
-
-    // Add new project to the list
     setProjects([...projects, projectName]);
+    toast.success(`Project "${projectName}" added successfully.`);
     setProjectName("");
   };
 
   const handleDeleteProject = (index) => {
-    // Remove the project by its index
     const updatedProjects = projects.filter((_, i) => i !== index);
+    toast.info(`Project "${projects[index]}" deleted.`);
     setProjects(updatedProjects);
   };
 
   return (
     <div className="p-6">
       <h1 className="text-2xl font-bold mb-4">Manage Projects</h1>
-
-      {/* Add Project Form */}
       <form onSubmit={handleAddProject} className="mb-6">
         <input
           type="text"
@@ -44,8 +40,6 @@ const Projects = () => {
           Add Project
         </button>
       </form>
-
-      {/* Projects List */}
       {projects.length === 0 ? (
         <p className="text-gray-600">No projects available. Add some projects!</p>
       ) : (
