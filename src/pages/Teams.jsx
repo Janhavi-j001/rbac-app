@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import BackButton from "../components/BackButton";
 
 const Teams = () => {
   const [teams, setTeams] = useState([]);
@@ -13,6 +14,7 @@ const Teams = () => {
 
   return (
     <div className="p-6">
+      <BackButton />
       <h1 className="text-2xl font-bold mb-4">Teams Management</h1>
       <div className="flex space-x-4 mb-6">
         <input

@@ -1,41 +1,62 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import Navbar from "./components/Dashboard/Navbar";
 import Login from "./components/Auth/Login";
 import Signup from "./components/Auth/Signup";
 import Home from "./pages/Home";
-import Users from "./pages/Users";
-import Roles from "./pages/Roles";
-import Permissions from "./pages/Permissions";
-import Projects from "./pages/Projects";
-import Teams from "./pages/Teams";
 import ActivityLogs from "./pages/ActivityLogs";
 import AuditLogs from "./pages/AuditLogs";
+import Teams from "./pages/Teams";
+import AddProject from "./pages/AddProject";
 import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 import ProtectedRoute from "./components/ProtectedRoute";
+import "./App.css";
 
 const App = () => {
+  const [darkMode, setDarkMode] = useState(
+    localStorage.getItem("theme") === "dark"
+  );
+
+  // Apply the theme based on darkMode state
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add("dark-mode");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.body.classList.remove("dark-mode");
+      localStorage.setItem("theme", "light");
+    }
+  }, [darkMode]);
+
+  const toggleTheme = () => {
+    setDarkMode(!darkMode);
+  };
+
   return (
     <Router>
-      <Routes>
-        {/* Public Routes */}
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
+      <div className={darkMode ? "app dark" : "app"}>
+        <Navbar darkMode={darkMode} toggleTheme={toggleTheme} />
+        <Routes>
+          {/* Redirect root URL to login */}
+          <Route path="/" element={<Navigate to="/login" />} />
 
-        {/* Protected Routes */}
-        <Route path="/dashboard" element={<ProtectedRoute element={<Home />} />} />
-        <Route path="/users" element={<ProtectedRoute element={<Users />} />} />
-        <Route path="/roles" element={<ProtectedRoute element={<Roles />} />} />
-        <Route path="/permissions" element={<ProtectedRoute element={<Permissions />} />} />
-        <Route path="/projects" element={<ProtectedRoute element={<Projects />} />} />
-        <Route path="/teams" element={<ProtectedRoute element={<Teams />} />} />
-        <Route path="/activity-logs" element={<ProtectedRoute element={<ActivityLogs />} />} />
-        <Route path="/audit-logs" element={<ProtectedRoute element={<AuditLogs />} />} />
-        <Route path="/settings" element={<ProtectedRoute element={<Settings />} />} />
+          {/* Public Routes */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
 
-        {/* Catch-All Route */}
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+          {/* Protected Routes */}
+          <Route path="/dashboard" element={<ProtectedRoute element={<Home />} />} />
+          <Route path="/activity-logs" element={<ProtectedRoute element={<ActivityLogs />} />} />
+          <Route path="/audit-logs" element={<ProtectedRoute element={<AuditLogs />} />} />
+          <Route path="/teams" element={<ProtectedRoute element={<Teams />} />} />
+          <Route path="/add-project" element={<ProtectedRoute element={<AddProject />} />} />
+          <Route path="/settings" element={<ProtectedRoute element={<Settings />} />} />
+
+          {/* Catch-All Route */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </div>
     </Router>
   );
 };

@@ -1,23 +1,20 @@
 import React, { useState, useEffect } from "react";
+import BackButton from "../components/BackButton";
 
 const ActivityLogs = () => {
-  const [activities, setActivities] = useState([]); // Keep `setActivities` if you plan to update logs dynamically
+  const [activities, setActivities] = useState([]);
 
   useEffect(() => {
-    // Example data fetch
-    const fetchActivityLogs = async () => {
-      const mockActivities = [
-        { id: 1, action: "User logged in", timestamp: "2024-11-24 10:00 AM" },
-        { id: 2, action: "Role updated", timestamp: "2024-11-23 2:00 PM" },
-      ];
-      setActivities(mockActivities);
-    };
-
-    fetchActivityLogs();
-  }, []); // Empty dependency ensures this runs once on mount
+    const mockActivities = [
+      { id: 1, action: "User logged in", timestamp: "2024-11-24 10:00 AM" },
+      { id: 2, action: "Role updated", timestamp: "2024-11-23 2:00 PM" },
+    ];
+    setActivities(mockActivities);
+  }, []);
 
   return (
     <div className="p-4">
+      <BackButton />
       <h2 className="text-xl font-bold mb-4">Activity Logs</h2>
       <ul>
         {activities.map((activity) => (
