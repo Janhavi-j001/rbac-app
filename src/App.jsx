@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import FrontPage from "./pages/FrontPage";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; // Import styles
@@ -38,8 +39,10 @@ const App = () => {
         {/* Display Navbar only when authenticated */}
         {isAuthenticated && <Navbar />}
         
+        
         <ToastContainer position="top-right" autoClose={3000} /> {/* Toastify */}
         <Routes>
+          <Route path="/" element={<FrontPage />} />
           <Route path="/" element={<Navigate to="/login" />} />
           <Route path="/login" element={<Login onLogin={handleLogin} />} />
           <Route path="/signup" element={<Signup onSignup={handleLogout} />} />
