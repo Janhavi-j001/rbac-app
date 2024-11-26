@@ -25,12 +25,7 @@ const Navbar = ({ darkMode, toggleTheme }) => {
           Settings
         </Link>
       </div>
-      <button
-        onClick={toggleTheme}
-        className="bg-gray-700 px-4 py-2 rounded-md hover:bg-gray-600"
-      >
-        {darkMode ? "Light Mode" : "Dark Mode"}
-      </button>
+      
     </nav>
   );
 };

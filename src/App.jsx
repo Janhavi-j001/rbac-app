@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; // Import styles
@@ -19,24 +19,10 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import "./App.css";
 
 const App = () => {
-  const [darkMode, setDarkMode] = useState(
-    localStorage.getItem("theme") === "dark"
-  );
+  // Initialize darkMode based on localStorage value or default to false
+  
   const [isAuthenticated, setIsAuthenticated] = useState(false); // Track authentication status
-
-  useEffect(() => {
-    if (darkMode) {
-      document.body.classList.add("dark-mode");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.body.classList.remove("dark-mode");
-      localStorage.setItem("theme", "light");
-    }
-  }, [darkMode]);
-
-  const toggleTheme = () => {
-    setDarkMode(!darkMode);
-  };
+  
 
   const handleLogin = () => {
     setIsAuthenticated(true); // Set authentication state to true after login
@@ -48,9 +34,9 @@ const App = () => {
 
   return (
     <Router>
-      <div className={darkMode ? "app dark" : "app"}>
+      
         {/* Display Navbar only when authenticated */}
-        {isAuthenticated && <Navbar darkMode={darkMode} toggleTheme={toggleTheme} />}
+        {isAuthenticated && <Navbar />}
         
         <ToastContainer position="top-right" autoClose={3000} /> {/* Toastify */}
         <Routes>
@@ -68,7 +54,7 @@ const App = () => {
           <Route path="/roles" element={<ProtectedRoute element={<Roles />} />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </div>
+     
     </Router>
   );
 };
