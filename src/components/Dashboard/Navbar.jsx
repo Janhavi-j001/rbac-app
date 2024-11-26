@@ -21,9 +21,6 @@ const Navbar = ({ darkMode, toggleTheme }) => {
         <Link to="/teams" className="hover:text-gray-300">
           Teams
         </Link>
-        <Link to="/add-project" className="hover:text-gray-300">
-          Add Project
-        </Link>
         <Link to="/settings" className="hover:text-gray-300">
           Settings
         </Link>

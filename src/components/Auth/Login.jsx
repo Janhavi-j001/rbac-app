@@ -50,6 +50,15 @@ const Login = () => {
             Login
           </button>
         </form>
+        <p className="text-center mt-4 text-gray-600">
+          Already have an account?{" "}
+          <span
+            onClick={() => navigate("/signup")}
+            className="text-blue-500 cursor-pointer hover:underline"
+          >
+            SignUp here
+          </span>
+        </p>
       </div>
     </div>
   );

@@ -10,8 +10,11 @@ import ActivityLogs from "./pages/ActivityLogs";
 import AuditLogs from "./pages/AuditLogs";
 import Teams from "./pages/Teams";
 import Projects from "./pages/Projects";
+import Users from "./pages/Users"
+import Permissions from "./pages/Permissions";
 import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
+import Roles from "./pages/Roles";
 import ProtectedRoute from "./components/ProtectedRoute";
 import "./App.css";
 
@@ -49,6 +52,9 @@ const App = () => {
           <Route path="/audit-logs" element={<ProtectedRoute element={<AuditLogs />} />} />
           <Route path="/teams" element={<ProtectedRoute element={<Teams />} />} />
           <Route path="/settings" element={<ProtectedRoute element={<Settings />} />} />
+          <Route path="/users" element={<ProtectedRoute element={<Users />} />} />
+          <Route path="/permissions" element={<ProtectedRoute element={<Permissions />} />} />
+          <Route path="/roles" element={<ProtectedRoute element={<Roles />} />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
