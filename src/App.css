@@ -124,4 +124,12 @@ body.dark-mode button:hover {
   padding: 1rem;
   overflow-y: auto;
 }
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.app.dark {
+  background-color: #1e1e1e;
+}
 

@@ -20,6 +20,9 @@ const Sidebar = ({ darkMode }) => {
         <li>
           <Link to="/projects" className={`${darkMode ? "text-blue-400" : "text-blue-600"} hover:underline`}>Projects</Link>
         </li>
+        <li>
+          <Link to="/login" className={`${darkMode ? "text-blue-400" : "text-blue-600"} hover:underline`}>Logout</Link>
+        </li>
       </ul>
     </aside>
   );

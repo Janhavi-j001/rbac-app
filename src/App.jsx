@@ -10,7 +10,7 @@ import ActivityLogs from "./pages/ActivityLogs";
 import AuditLogs from "./pages/AuditLogs";
 import Teams from "./pages/Teams";
 import Projects from "./pages/Projects";
-import Users from "./pages/Users"
+import Users from "./pages/Users";
 import Permissions from "./pages/Permissions";
 import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
@@ -22,6 +22,7 @@ const App = () => {
   const [darkMode, setDarkMode] = useState(
     localStorage.getItem("theme") === "dark"
   );
+  const [isAuthenticated, setIsAuthenticated] = useState(false); // Track authentication status
 
   useEffect(() => {
     if (darkMode) {
@@ -37,15 +38,25 @@ const App = () => {
     setDarkMode(!darkMode);
   };
 
+  const handleLogin = () => {
+    setIsAuthenticated(true); // Set authentication state to true after login
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false); // Reset authentication state on logout
+  };
+
   return (
     <Router>
       <div className={darkMode ? "app dark" : "app"}>
-        <Navbar darkMode={darkMode} toggleTheme={toggleTheme} />
+        {/* Display Navbar only when authenticated */}
+        {isAuthenticated && <Navbar darkMode={darkMode} toggleTheme={toggleTheme} />}
+        
         <ToastContainer position="top-right" autoClose={3000} /> {/* Toastify */}
         <Routes>
           <Route path="/" element={<Navigate to="/login" />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login onLogin={handleLogin} />} />
+          <Route path="/signup" element={<Signup onSignup={handleLogout} />} />
           <Route path="/dashboard" element={<ProtectedRoute element={<Home />} />} />
           <Route path="/projects" element={<ProtectedRoute element={<Projects />} />} />
           <Route path="/activity-logs" element={<ProtectedRoute element={<ActivityLogs />} />} />
