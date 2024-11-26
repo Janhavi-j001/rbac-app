@@ -4,24 +4,22 @@ import { Link } from "react-router-dom";
 const Navbar = ({ darkMode, toggleTheme }) => {
   return (
     <nav
-      className={`flex items-center justify-between px-6 py-4 ${
-        darkMode ? "bg-gray-900" : "bg-gray-800"
-      } text-white`}
+            className={`flex items-center justify-between`}
     >
-      <div className="flex items-center space-x-4">
-        <Link to="/dashboard" className="text-lg font-bold hover:text-gray-300">
+      <div className="flex items-center space-x-6">
+        <Link to="/dashboard" className="text-lg font-bold ">
           Dashboard
         </Link>
-        <Link to="/activity-logs" className="hover:text-gray-300">
+        <Link to="/activity-logs" >
           Activity Logs
         </Link>
-        <Link to="/audit-logs" className="hover:text-gray-300">
+        <Link to="/audit-logs" >
           Audit Logs
         </Link>
-        <Link to="/teams" className="hover:text-gray-300">
+        <Link to="/teams" >
           Teams
         </Link>
-        <Link to="/settings" className="hover:text-gray-300">
+        <Link to="/settings" >
           Settings
         </Link>
       </div>

@@ -40,17 +40,22 @@ const Roles = () => {
             onChange={(e) => setNewRole(e.target.value)}
             className="border p-2 rounded mr-2"
           />
-          <button onClick={handleAddRole} className="bg-green-500 text-white px-4 py-2 rounded">
+          <button 
+          style={{backgroundColor: "#3d52a0", color: "#ede8f5"}}
+          onClick={handleAddRole} className=" px-4 py-2 rounded">
             Add Role
           </button>
         </div>
         <ul className="mt-6 space-y-2">
           {roles.map((role) => (
-            <li key={role} className="flex justify-between items-center border p-2 rounded">
+            <li 
+            style={{backgroundColor: "#8697c4", color: "#ede8f5"}}
+            key={role} className="flex justify-between items-center border p-2 rounded">
               <span>{role}</span>
               <button
+              style={{backgroundColor: "#3d52a0", color: "#ede8f5"}}
                 onClick={() => handleDeleteRole(role)}
-                className="bg-red-500 text-white px-2 py-1 rounded"
+                className="px-2 py-1 rounded"
               >
                 Delete
               </button>

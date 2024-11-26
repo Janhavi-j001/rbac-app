@@ -1,27 +1,29 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Logout from '../../pages/Logout';
 
 const Sidebar = ({ darkMode }) => {
   return (
-    <aside className={`w-60 p-4 ${darkMode ? "bg-gray-800 text-white" : "bg-gray-200 text-black"}`}>
-      <ul className="space-y-4">
+    <aside style={{background: "#3d52a0"}} className={`w-60 p-4`}>
+      <ul style={{color: "#ede8f5"}} className="space-y-4">
         <li>
-          <Link to="/dashboard" className={`${darkMode ? "text-blue-400" : "text-blue-600"} hover:underline`}>Dashboard</Link>
+          <Link to="/dashboard" className={`hover:underline`}>Dashboard</Link>
         </li>
         <li>
-          <Link to="/users" className={`${darkMode ? "text-blue-400" : "text-blue-600"} hover:underline`}>Users</Link>
+          <Link to="/users" className={` hover:underline`}>Users</Link>
         </li>
         <li>
-          <Link to="/roles" className={`${darkMode ? "text-blue-400" : "text-blue-600"} hover:underline`}>Roles</Link>
+          <Link to="/roles" className={`hover:underline`}>Roles</Link>
         </li>
         <li>
-          <Link to="/permissions" className={`${darkMode ? "text-blue-400" : "text-blue-600"} hover:underline`}>Permissions</Link>
+          <Link to="/permissions" className={`hover:underline`}>Permissions</Link>
         </li>
         <li>
-          <Link to="/projects" className={`${darkMode ? "text-blue-400" : "text-blue-600"} hover:underline`}>Projects</Link>
+          <Link to="/projects" className={`hover:underline`}>Projects</Link>
         </li>
         <li>
-          <Link to="/login" className={`${darkMode ? "text-blue-400" : "text-blue-600"} hover:underline`}>Logout</Link>
+          <Logout></Logout>
+          
         </li>
       </ul>
     </aside>

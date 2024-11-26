@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import BackButton from "../components/BackButton";
+import activity from "../imgs/activity.svg"
 
 const ActivityLogs = () => {
   const [activities, setActivities] = useState([]);
@@ -13,9 +14,16 @@ const ActivityLogs = () => {
   }, []);
 
   return (
-    <div className="p-4">
+    <div className="p-4 activity">
       <BackButton />
       <h2 className="text-xl font-bold mb-4">Activity Logs</h2>
+      <div className="max-w-lg">
+          <img 
+            src={activity} 
+            alt="signup" 
+            className="w-half max-h-80 rounded-lg"
+          />
+        </div>
       <ul>
         {activities.map((activity) => (
           <li key={activity.id}>

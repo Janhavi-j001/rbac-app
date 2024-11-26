@@ -52,7 +52,9 @@ const Users = () => {
             onChange={(e) => setNewUser({ ...newUser, role: e.target.value })}
             className="border p-2 rounded mr-2"
           />
-          <button onClick={handleAddUser} className="bg-green-500 text-white px-4 py-2 rounded">
+          <button 
+          style={{backgroundColor: "#3d52a0", color: "#ede8f5"}}
+          onClick={handleAddUser} className="bg-green-500 text-white px-4 py-2 rounded">
             Add User
           </button>
         </div>
@@ -73,6 +75,7 @@ const Users = () => {
                 <td className="border p-2">{user.role}</td>
                 <td className="border p-2">
                   <button
+                    style={{backgroundColor: "#3d52a0", color: "#ede8f5"}}
                     onClick={() => handleDeleteUser(user.email)}
                     className="bg-red-500 text-white px-2 py-1 rounded"
                   >

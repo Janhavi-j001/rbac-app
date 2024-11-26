@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+import Sidebar from "../components/Dashboard/Sidebar";
+import Navbar from "../components/Dashboard/Navbar";
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
@@ -23,6 +25,11 @@ const Projects = () => {
   };
 
   return (
+    <div className="flex min-h-screen">
+      <Sidebar />
+      <main className="flex-1 p-4">
+        <Navbar />
+    
     <div className="p-6">
       <h1 className="text-2xl font-bold mb-4">Manage Projects</h1>
       <form onSubmit={handleAddProject} className="mb-6">
@@ -60,6 +67,8 @@ const Projects = () => {
           ))}
         </ul>
       )}
+    </div>
+    </main>
     </div>
   );
 };
