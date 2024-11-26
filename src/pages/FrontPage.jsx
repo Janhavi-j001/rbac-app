@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import teams from "../imgs/team.svg";
 
 const FrontPage = () => {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ const FrontPage = () => {
       <div className="flex flex-wrap items-center justify-center space-x-8">
         <div className="max-w-lg">
           <img 
-            src="src/imgs/team.svg" 
+            src={teams} 
             alt="Team Collaboration" 
             className="w-full max-h-96 rounded-lg shadow-lg"
           />
