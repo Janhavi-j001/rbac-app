@@ -41,6 +41,7 @@ const Login = () => {
             <div className="form-group">
               <label>Email</label>
               <input
+                style={{color: "black"}}
                 type="email"
                 className="form-input"
                 value={email}
@@ -51,6 +52,7 @@ const Login = () => {
             <div className="form-group">
               <label>Password</label>
               <input
+                style={{color: "black"}}
                 type="password"
                 className="form-input"
                 value={password}
