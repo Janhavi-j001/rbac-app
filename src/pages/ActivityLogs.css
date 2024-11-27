@@ -1,0 +1,528 @@
+/* General Container Styling */
+.activity-container {
+    padding: 16px;
+    font-family: Arial, sans-serif;
+    background-color: #f7f7ff; /* Keep the light background */
+  }
+  
+  /* Title Styling */
+  .title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  
+  /* Flexbox Content Layout */
+  .content {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap; /* Responsive for smaller screens */
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Image Container and Styling */
+  .image-container {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .activity-image {
+    max-width: 60%;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth animation */
+  }
+  
+  .activity-image:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15); /* Add shadow effect */
+  }
+  
+  /* Logs Container and Styling */
+  .logs-container {
+    flex: 1;
+    max-width: 500px;
+  }
+  
+  /* Activity List Styling */
+  .activity-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .activity-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    font-size: 1rem;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .activity-item:hover {
+    transform: translateX(5px); 
+    background-color: #eaeaff; 
+    cursor: pointer;
+  }
+  
+  /* Preserve Default Colors */
+  .activity-item strong {
+    font-weight: bold;
+  }
+  
+  .activity-item em {
+    font-style: italic;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .content {
+      flex-direction: column; 
+    }
+  }
+  /* General Container Styling */
+.activity-container {
+  padding: 16px;
+  font-family: Arial, sans-serif;
+  background-color: #f7f7ff; /* Light background */
+}
+
+/* Title Styling */
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+/* Flexbox Layout for Input and Button */
+.input-container {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+  align-items: center;
+}
+
+.form-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.add-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.add-button:hover {
+  background-color: #45a049;
+}
+
+/* Team List Styling */
+.activity-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.activity-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background-color: #8697c4;
+  color: #ede8f5;
+  font-size: 1rem;
+  border-radius: 8px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.activity-item:hover {
+  transform: translateX(5px);
+  background-color: #7f8fa6;
+  cursor: pointer;
+}
+
+.activity-item span {
+  flex: 1;
+}
+
+/* Delete Button Styling */
+.delete-button {
+  background-color: #f44336;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background-color: #e53935;
+}
+
+/* Image Styling */
+.image-container {
+  text-align: center;
+}
+
+.activity-image {
+  max-width: 60%;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.activity-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .input-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .activity-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .activity-item span {
+    margin-bottom: 8px;
+  }
+}
+/* General Container Styling */
+.settings-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f7f7ff;
+}
+
+/* Title Styling */
+.settings-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Settings Section Styling */
+.settings-section {
+  margin-bottom: 24px;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.settings-subtitle {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+/* Input Groups */
+.settings-input-group {
+  margin-bottom: 12px;
+}
+
+.settings-label {
+  font-size: 1rem;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.settings-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+
+.settings-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Toggle Checkbox Styling */
+.settings-checkbox {
+  width: 20px;
+  height: 20px;
+}
+
+/* Buttons */
+.settings-button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  width: 100%;
+}
+
+.change-password {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.change-password:hover {
+  background-color: #45a049;
+}
+
+.delete-account {
+  background-color: #f44336;
+  color: white;
+}
+
+.delete-account:hover {
+  background-color: #e53935;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .settings-container {
+    padding: 16px;
+  }
+
+  .settings-input {
+    width: 100%;
+  }
+
+  .settings-toggle {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .settings-checkbox {
+    margin-left: 10px;
+  }
+}
+/* General Container Styling */
+.settings-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f7f7ff;
+  max-width: 800px; /* Set container width to be smaller */
+  margin-left: 20px; /* Align to the left side */
+  margin-right: auto;
+}
+
+/* Dark Mode Styling */
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+body.dark-mode .settings-container {
+  background-color: #1f1f1f;
+  color: #ffffff;
+}
+
+body.dark-mode .settings-button {
+  background-color: #3a3a3a;
+  color: #ffffff;
+}
+
+body.dark-mode .settings-button:hover {
+  background-color: #444;
+}
+
+body.dark-mode .settings-input,
+body.dark-mode .settings-checkbox {
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+body.dark-mode .settings-label {
+  color: #ccc;
+}
+
+/* Title Styling */
+.settings-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Settings Section Styling */
+.settings-section {
+  margin-bottom: 24px;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.settings-section.dark {
+  background-color: #333;
+}
+
+.settings-subtitle {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+/* Input Groups */
+.settings-input-group {
+  margin-bottom: 12px;
+}
+
+.settings-label {
+  font-size: 1rem;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.settings-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+
+/* Toggle Checkbox Styling */
+.settings-checkbox {
+  width: 20px;
+  height: 20px;
+}
+
+/* Buttons */
+.settings-button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  width: 100%;
+}
+
+.change-password {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.change-password:hover {
+  background-color: #45a049;
+}
+
+.delete-account {
+  background-color: #f44336;
+  color: white;
+}
+
+.delete-account:hover {
+  background-color: #e53935;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .settings-container {
+    padding: 16px;
+  }
+
+  .settings-input {
+    width: 100%;
+  }
+
+  .settings-toggle {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .settings-checkbox {
+    margin-left: 10px;
+  }
+}
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+/* Styles for the change password form */
+.change-password-form {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.change-password-form .settings-input-group {
+  margin-bottom: 15px;
+}
+
+.change-password-form .settings-label {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.change-password-form .settings-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.change-password-form .settings-input:focus {
+  outline: none;
+  border-color: #4CAF50; /* Green border on focus */
+}
+
+.change-password-form .settings-button.submit-change-password {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.change-password-form .settings-button.submit-change-password:hover {
+  background-color: #45a049;
+}
+
+.change-password-form .settings-button.submit-change-password:active {
+  background-color: #3e8e41;
+}
+
+.change-password-form .settings-button.submit-change-password:disabled {
+  background-color: #b2d8b2;
+  cursor: not-allowed;
+}
+
+/* Styles for the error message */
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+  font-weight: bold;
+}

@@ -5,17 +5,50 @@ import Sidebar from '../components/Dashboard/Sidebar';
 const Users = () => {
   const [users, setUsers] = useState([]);
   const [newUser, setNewUser] = useState({ email: '', name: '', role: '' });
+  const [errors, setErrors] = useState({ email: '', name: '', role: '' });
 
   useEffect(() => {
     const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
     setUsers(storedUsers);
   }, []);
 
+  const validateEmail = (email) => {
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    return emailRegex.test(email);
+  };
+
   const handleAddUser = () => {
-    const updatedUsers = [...users, newUser];
-    setUsers(updatedUsers);
-    localStorage.setItem('users', JSON.stringify(updatedUsers));
-    setNewUser({ email: '', name: '', role: '' });
+    const { email, name, role } = newUser;
+    let valid = true;
+    let validationErrors = { email: '', name: '', role: '' };
+
+    // Check if any field is empty
+    if (!name) {
+      validationErrors.name = 'Name is required.';
+      valid = false;
+    }
+
+    if (!email) {
+      validationErrors.email = 'Email is required.';
+      valid = false;
+    } else if (!validateEmail(email)) {
+      validationErrors.email = 'Please enter a valid email address.';
+      valid = false;
+    }
+
+    if (!role) {
+      validationErrors.role = 'Role is required.';
+      valid = false;
+    }
+
+    setErrors(validationErrors);
+
+    if (valid) {
+      const updatedUsers = [...users, newUser];
+      setUsers(updatedUsers);
+      localStorage.setItem('users', JSON.stringify(updatedUsers));
+      setNewUser({ email: '', name: '', role: '' });
+    }
   };
 
   const handleDeleteUser = (email) => {
@@ -29,63 +62,68 @@ const Users = () => {
       <Sidebar />
       <main className="flex-1 p-4">
         <Navbar />
-        <h1 className="text-2xl font-bold">Manage Users</h1>
-        <div className="mt-4">
-          <input
-            type="text"
-            placeholder="Name"
-            value={newUser.name}
-            onChange={(e) => setNewUser({ ...newUser, name: e.target.value })}
-            className="border p-2 rounded mr-2"
-          />
-          <input
-            type="email"
-            placeholder="Email"
-            value={newUser.email}
-            onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
-            className="border p-2 rounded mr-2"
-          />
-          <input
-            type="text"
-            placeholder="Role"
-            value={newUser.role}
-            onChange={(e) => setNewUser({ ...newUser, role: e.target.value })}
-            className="border p-2 rounded mr-2"
-          />
-          <button 
-          style={{backgroundColor: "#3d52a0", color: "#ede8f5"}}
-          onClick={handleAddUser} className="bg-green-500 text-white px-4 py-2 rounded">
-            Add User
-          </button>
-        </div>
-        <table className="mt-6 w-full border-collapse border border-gray-200">
-          <thead>
-            <tr className="bg-gray-100">
-              <th className="border p-2">Name</th>
-              <th className="border p-2">Email</th>
-              <th className="border p-2">Role</th>
-              <th className="border p-2">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((user) => (
-              <tr key={user.email}>
-                <td className="border p-2">{user.name}</td>
-                <td className="border p-2">{user.email}</td>
-                <td className="border p-2">{user.role}</td>
-                <td className="border p-2">
-                  <button
-                    style={{backgroundColor: "#3d52a0", color: "#ede8f5"}}
-                    onClick={() => handleDeleteUser(user.email)}
-                    className="bg-red-500 text-white px-2 py-1 rounded"
-                  >
-                    Delete
-                  </button>
-                </td>
+        <div className="users-container">
+          <h1 className="users-title">Manage Users</h1>
+          <div className="users-form">
+            <input
+              type="text"
+              placeholder="Name"
+              value={newUser.name}
+              onChange={(e) => setNewUser({ ...newUser, name: e.target.value })}
+              className="user-input"
+            />
+            {errors.name && <p className="error-text">{errors.name}</p>} {/* Error for name */}
+
+            <input
+              type="email"
+              placeholder="Email"
+              value={newUser.email}
+              onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
+              className="user-input"
+            />
+            {errors.email && <p className="error-text">{errors.email}</p>} {/* Error for email */}
+
+            <input
+              type="text"
+              placeholder="Role"
+              value={newUser.role}
+              onChange={(e) => setNewUser({ ...newUser, role: e.target.value })}
+              className="user-input"
+            />
+            {errors.role && <p className="error-text">{errors.role}</p>} {/* Error for role */}
+
+            <button onClick={handleAddUser} className="add-user-btn">
+              Add User
+            </button>
+          </div>
+          <table className="users-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {users.map((user) => (
+                <tr key={user.email}>
+                  <td>{user.name}</td>
+                  <td>{user.email}</td>
+                  <td>{user.role}</td>
+                  <td>
+                    <button
+                      onClick={() => handleDeleteUser(user.email)}
+                      className="delete-user-btn"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </main>
     </div>
   );

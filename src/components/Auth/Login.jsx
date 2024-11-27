@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { loginUser } from "../../utils/auth";
 import login from "../../imgs/login.svg";
+import "../../styles/page.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -20,60 +21,63 @@ const Login = () => {
   };
 
   return (
-    <div style={{ backgroundColor: "#ede8f5", color: "#3d52a0" }} className="flex justify-center items-center h-screen ">
-      <div className="max-w-lg">
-          <img 
-            src={login} 
-            alt="login" 
-            className="w-full max-h-96 rounded-lg "
-          />
-        </div>
-      <div style={{ backgroundColor: "#3d52a0", color: "#adbbda" }} className="w-96 p-6 rounded shadow-md">
-        <h2 className="text-2xl font-bold mb-4 text-center">Login</h2>
-        <form onSubmit={handleLogin}>
-          <div className="mb-4">
-            <label className="block ">Email</label>
-            <input
-              style={{ backgroundColor: "#ede8f5" }}
-              type="email"
-              className="w-full px-3 py-2 border rounded focus:outline-none"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-          <div className="mb-4">
-            <label className="block ">Password</label>
-            <input
-              style={{ backgroundColor: "#ede8f5" }}
-              type="password"
-              className="w-full px-3 py-2 border rounded focus:outline-none"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-          <button
-            style={{ backgroundColor: "#7091e6", color: "#ede8f5" }}
-            type="submit"
-            className="w-full py-2 rounded hover:bg-blue-600"
-          >
-            Login
-          </button>
-        </form>
-        <p style={{ color: "#8697c4" }} className="text-center mt-4 ">
-          Don't have an account?{" "}
-          <span
-            style={{ color: "#ede8f5" }}
-            onClick={() => navigate("/signup")}
-            className="cursor-pointer hover:underline"
-          >
-            SignUp here
-          </span>
-        </p>
-        
+    <div className="login-page-container">
+      {/* Header Section */}
+      <div className="login-header">
+        <h1 className="login-title">Welcome Back!</h1>
+        <p className="login-subtitle">Login to access your dashboard and manage your projects.</p>
       </div>
-      
+
+      <div className="login-content">
+        {/* Image Section */}
+        <div className="login-image-container">
+          <img src={login} alt="login" className="login-image" />
+        </div>
+
+        {/* Form Section */}
+        <div className="login-form-container">
+          <h2 className="form-title">Login</h2>
+          <form onSubmit={handleLogin} className="login-form">
+            <div className="form-group">
+              <label>Email</label>
+              <input
+                type="email"
+                className="form-input"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label>Password</label>
+              <input
+                type="password"
+                className="form-input"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+            <button type="submit" className="login-button">
+              Login
+            </button>
+          </form>
+          <p className="form-footer">
+            Don't have an account?{" "}
+            <span
+              className="form-link"
+              onClick={() => navigate("/signup")}
+            >
+              Sign Up here
+            </span>
+          </p>
+        </div>
+      </div>
+
+      {/* Footer Section */}
+      <footer className="login-footer">
+        <p>© {new Date().getFullYear()} TeamHub. All rights reserved.</p>
+      </footer>
     </div>
   );
 };

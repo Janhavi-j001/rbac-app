@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import BackButton from "../components/BackButton";
 import teams1 from "../imgs/teams.svg";
+import "./ActivityLogs.css"; // Importing the CSS file for styling
 
 const Teams = () => {
   const [teams, setTeams] = useState([]);
@@ -13,44 +14,43 @@ const Teams = () => {
     }
   };
 
+  const deleteTeam = (teamToDelete) => {
+    setTeams(teams.filter((team) => team !== teamToDelete));
+  };
+
   return (
-    <div className="p-6">
+    <div className="activity-container">
       <BackButton />
       
-      <h1 className="text-2xl font-bold mb-4">Teams Management</h1>
-      <div className="flex space-x-4 mb-6">
+      <h1 className="title">Teams Management</h1>
+      <div className="input-container">
         <input
           type="text"
           value={teamName}
           onChange={(e) => setTeamName(e.target.value)}
-          className="border px-4 py-2 rounded-md w-full"
+          className="form-input"
           placeholder="Enter team name"
         />
-        <button
-          onClick={addTeam}
-          className="bg-blue-600 text-white px-4 py-2 rounded-md"
-        >
+        <button onClick={addTeam} className="add-button">
           Add Team
         </button>
       </div>
-      <ul 
-      
-      className="space-y-2">
+      <ul className="activity-list">
         {teams.map((team, index) => (
-          <li 
-          style={{backgroundColor: "#8697c4", color: "#ede8f5"}}
-          key={index} className="border px-4 py-2 rounded-md">
-            {team}
+          <li key={index} className="activity-item">
+            <span>{team}</span>
+            <button
+              onClick={() => deleteTeam(team)}
+              className="delete-button"
+            >
+              Delete
+            </button>
           </li>
         ))}
       </ul>
-      <div className="max-w-lg">
-          <img 
-            src={teams1} 
-            alt="teams" 
-            className="w-half max-h-80 rounded-lg"
-          />
-        </div>
+      <div className="image-container">
+        <img src={teams1} alt="teams" className="activity-image" />
+      </div>
     </div>
   );
 };

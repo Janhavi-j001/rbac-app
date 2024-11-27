@@ -29,46 +29,39 @@ const Projects = () => {
       <Sidebar />
       <main className="flex-1 p-4">
         <Navbar />
-    
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Manage Projects</h1>
-      <form onSubmit={handleAddProject} className="mb-6">
-        <input
-          type="text"
-          value={projectName}
-          onChange={(e) => setProjectName(e.target.value)}
-          placeholder="Enter project name"
-          className="border rounded-md px-4 py-2 w-2/3 mr-4"
-        />
-        <button
-          type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-500"
-        >
-          Add Project
-        </button>
-      </form>
-      {projects.length === 0 ? (
-        <p className="text-gray-600">No projects available. Add some projects!</p>
-      ) : (
-        <ul className="space-y-2">
-          {projects.map((project, index) => (
-            <li
-              key={index}
-              className="flex items-center justify-between bg-gray-100 p-4 rounded-md"
-            >
-              <span>{project}</span>
-              <button
-                onClick={() => handleDeleteProject(index)}
-                className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-400"
-              >
-                Delete
-              </button>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-    </main>
+        <div className="projects-container">
+          <h1 className="projects-title">Manage Projects</h1>
+          <form onSubmit={handleAddProject} className="projects-form">
+            <input
+              type="text"
+              value={projectName}
+              onChange={(e) => setProjectName(e.target.value)}
+              placeholder="Enter project name"
+              className="project-input"
+            />
+            <button type="submit" className="add-project-btn">
+              Add Project
+            </button>
+          </form>
+          {projects.length === 0 ? (
+            <p className="no-projects-message">No projects available. Add some projects!</p>
+          ) : (
+            <ul className="project-list">
+              {projects.map((project, index) => (
+                <li key={index} className="project-item">
+                  <span className="project-name">{project}</span>
+                  <button
+                    onClick={() => handleDeleteProject(index)}
+                    className="delete-project-btn"
+                  >
+                    Delete
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </main>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import BackButton from "../components/BackButton";
-import activity from "../imgs/activity.svg"
+import activity from "../imgs/activity.svg";
+import "./ActivityLogs.css"; // Importing a CSS file for styles
 
 const ActivityLogs = () => {
   const [activities, setActivities] = useState([]);
@@ -14,23 +15,23 @@ const ActivityLogs = () => {
   }, []);
 
   return (
-    <div className="p-4 activity">
+    <div className="activity-container">
       <BackButton />
-      <h2 className="text-xl font-bold mb-4">Activity Logs</h2>
-      <div className="max-w-lg">
-          <img 
-            src={activity} 
-            alt="signup" 
-            className="w-half max-h-80 rounded-lg"
-          />
+      <h2 className="title">Activity Logs</h2>
+      <div className="content">
+        <div className="image-container">
+          <img src={activity} alt="Activity illustration" className="activity-image" />
         </div>
-      <ul>
-        {activities.map((activity) => (
-          <li key={activity.id}>
-            {activity.action} - <em>{activity.timestamp}</em>
-          </li>
-        ))}
-      </ul>
+        <div className="logs-container">
+          <ul className="activity-list">
+            {activities.map((activity) => (
+              <li key={activity.id} className="activity-item">
+                <strong>{activity.action}</strong> - <em>{activity.timestamp}</em>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </div>
   );
 };

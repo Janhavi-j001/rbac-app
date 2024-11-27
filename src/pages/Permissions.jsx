@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Dashboard/Navbar';
 import Sidebar from '../components/Dashboard/Sidebar';
+import '../styles/page.css'; // Import the CSS file
 
 const Permissions = () => {
   const [roles, setRoles] = useState([]);
@@ -23,42 +24,42 @@ const Permissions = () => {
   };
 
   return (
-    <div className="flex min-h-screen">
+    <div className="permissions-container">
       <Sidebar />
-      <main className="flex-1 p-4">
+      <main className="permissions-main">
         <Navbar />
-        <h1 className="text-2xl font-bold">Manage Permissions</h1>
+        <h1 className="permissions-title">Manage Permissions</h1>
         {roles.length === 0 ? (
-          <p className="mt-4">No roles available. Add roles first.</p>
+          <p className="permissions-no-roles">No roles available. Add roles first.</p>
         ) : (
-          <div className="mt-6 space-y-6">
+          <div className="permissions-roles">
             {roles.map((role) => (
-              <div key={role} className="p-4 border rounded">
-                <h2 className="text-xl font-semibold">{role}</h2>
-                <div className="mt-2 space-y-2">
-                  <label className="block">
+              <div key={role} className="permissions-role">
+                <h2 className="permissions-role-title">{role}</h2>
+                <div className="permissions-options">
+                  <label className="permissions-option">
                     <input
                       type="checkbox"
                       checked={permissions[role]?.read || false}
                       onChange={(e) => handlePermissionChange(role, 'read', e.target.checked)}
                     />
-                    <span className="ml-2">Read</span>
+                    <span className="permissions-label">Read</span>
                   </label>
-                  <label className="block">
+                  <label className="permissions-option">
                     <input
                       type="checkbox"
                       checked={permissions[role]?.write || false}
                       onChange={(e) => handlePermissionChange(role, 'write', e.target.checked)}
                     />
-                    <span className="ml-2">Write</span>
+                    <span className="permissions-label">Write</span>
                   </label>
-                  <label className="block">
+                  <label className="permissions-option">
                     <input
                       type="checkbox"
                       checked={permissions[role]?.delete || false}
                       onChange={(e) => handlePermissionChange(role, 'delete', e.target.checked)}
                     />
-                    <span className="ml-2">Delete</span>
+                    <span className="permissions-label">Delete</span>
                   </label>
                 </div>
               </div>
