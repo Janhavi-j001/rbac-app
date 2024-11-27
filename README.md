@@ -1,70 +1,108 @@
-# Getting Started with Create React App
+### README for Role-Based Access Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## Available Scripts
+## **Project Title:** Role-Based Access Management System  
 
-In the project directory, you can run:
+This project is a React-based web application that implements **role-based access control (RBAC)** to manage user permissions dynamically. The system assigns users specific roles and displays pages based on their access level.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## **Features**
+1. **Role-Specific Navigation**  
+   - **Admin**: Access to *Dashboard*, *Permissions*, *Roles*, and *Logout*.
+   - **Project Manager**: Access to *Dashboard*, *Permissions*, *Roles*, *Projects*, and *Logout*.
+   - **Team Member**: Access to *Dashboard*, *Roles*, *Projects*, and *Logout*.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+2. **Authentication**  
+   - Login and Signup functionality with role selection during registration.
+   - Authentication state stored locally for session management.
 
-### `npm test`
+3. **Dynamic Sidebar & Navbar**  
+   - Pages and links adapt based on the logged-in user's role.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+4. **Protected Routes**  
+   - Routes are secured to ensure only authenticated users can access certain pages.
 
-### `npm run build`
+5. **UI Enhancements**  
+   - Clean and responsive design for better user experience.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## **Installation**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### **Prerequisites**
+- [Node.js](https://nodejs.org/) installed on your system.
+- A package manager like `npm` or `yarn`.
 
-### `npm run eject`
+### **Steps to Set Up**
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/role-based-access-project.git
+   cd role-based-access-project
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm start
+   ```
+4. Access the application at `http://localhost:3000`.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## **Folder Structure**
+```
+src/
+├── components/
+│   ├── Auth/
+│   │   ├── Login.jsx
+│   │   ├── Signup.jsx
+│   ├── Dashboard/
+│   │   ├── Navbar.jsx
+│   │   ├── Sidebar.jsx
+│   ├── ProtectedRoute.jsx
+├── pages/
+│   ├── Dashboard.jsx
+│   ├── Projects.jsx
+│   ├── ActivityLogs.jsx
+│   ├── Roles.jsx
+│   ├── Permissions.jsx
+│   ├── Logout.jsx
+├── utils/
+│   ├── auth.js
+├── App.jsx
+└── index.js
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## **Usage**
+### **Sign Up**
+1. Register as a new user and choose a role: Admin, Project Manager, or Team Member.
+2. Log in with your credentials.
 
-## Learn More
+### **Role-Based Access**
+- Navigation and accessible pages are automatically adjusted based on the role selected during signup.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### **Logout**
+- Clears the session and redirects to the login page.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+## **Technologies Used**
+- **Frontend**: React.js, React Router, redux
+- **State Management**: React `useState`
+- **Styling**: Custom CSS
+- **Local Storage**: To manage user data and roles
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## **Contributing**
+Feel free to fork the repository and make contributions. Open a pull request for review.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### **Screenshots**
