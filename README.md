@@ -60,15 +60,26 @@ src/
 │   │   ├── Navbar.jsx
 │   │   ├── Sidebar.jsx
 │   ├── ProtectedRoute.jsx
+|   ├── BackButton.jsx
 ├── pages/
 │   ├── Dashboard.jsx
 │   ├── Projects.jsx
 │   ├── ActivityLogs.jsx
 │   ├── Roles.jsx
-│   ├── Permissions.jsx
+|   └── Home.jsx    
+|   ├── AuditLogs.jsx
+|   ├── FrontPage.jsx
+|   ├── Settings.jsx
+|   ├── Users.jsx
+|   ├── Teams.jsx
+|   ├── Permissions.jsx
 │   ├── Logout.jsx
+├── styles/
+|   ├── index.css
+|   ├── page.css
 ├── utils/
 │   ├── auth.js
+|   ├── localStorageUtils.js
 ├── App.jsx
 └── index.js
 ```
