@@ -1,8 +1,4 @@
-### README for Role-Based Access Project
-
----
-
-## **Project Title:** Role-Based Access Management System  
+## **Project Title:** Role-Based Access Control app  
 
 This project is a React-based web application that implements **role-based access control (RBAC)** to manage user permissions dynamically. The system assigns users specific roles and displays pages based on their access level.
 
@@ -95,7 +91,7 @@ src/
 ## **Technologies Used**
 - **Frontend**: React.js, React Router, redux
 - **State Management**: React `useState`
-- **Styling**: Custom CSS
+- **Styling**: Custom CSS, Tailwind CSS
 - **Local Storage**: To manage user data and roles
 
 ---
@@ -103,6 +99,3 @@ src/
 ## **Contributing**
 Feel free to fork the repository and make contributions. Open a pull request for review.
 
----
-
-### **Screenshots**
