@@ -1,0 +1,175 @@
+/* General Container */
+.view-logs-container {
+    background-color: #3d52a0; /* Deep blue background */
+    min-height: 100vh;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Inter", sans-serif;
+    animation: fadeIn 1s ease-in-out;
+    color: #ede8f5; /* Lightest color for text contrast */
+  }
+  
+  /* Back Button Styling */
+  .back-button {
+    align-self: flex-start;
+    background-color: #7091e6; /* Light blue button */
+    color: #ede8f5; /* Lightest text */
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .back-link {
+    text-decoration: none;
+    color: #ede8f5; /* Match button text */
+  }
+  
+  .back-button:hover {
+    background-color: #8697c4; /* Slightly muted blue on hover */
+    transform: scale(1.05);
+  }
+  
+  /* Title Styling */
+  .page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ede8f5; /* Light color for the title */
+    margin-bottom: 2rem;
+    text-align: center;
+    letter-spacing: 1px;
+  }
+  
+  /* Image Styling */
+  .image-container {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .activity-image {
+    max-width: 100%;
+    height: auto;
+    width: 300px;
+    animation: slideIn 1s ease-out;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+  }
+  
+  /* Logs List Container */
+  .logs-list-container {
+    width: 100%;
+    max-width: 600px;
+    background: #7091e6; /* Light blue background */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    padding: 1.5rem;
+    overflow: hidden;
+    animation: bounceIn 1.2s ease-out;
+  }
+  
+  .logs-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .log-item {
+    display: flex;
+    flex-direction: column;
+    border-left: 4px solid;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    background-color: #adbbda; /* Muted background for logs */
+    animation: slideUp 0.5s ease-out forwards;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .log-item:nth-child(odd) {
+    border-color: #7091e6; /* Light blue for odd items */
+  }
+  
+  .log-item:nth-child(even) {
+    border-color: #8697c4; /* Muted blue for even items */
+  }
+  
+  .log-item:hover {
+    transform: translateY(-5px);
+    background-color: #ede8f5; /* Light hover effect */
+  }
+  
+  .log-timestamp {
+    font-size: 0.8rem;
+    color: #3d52a0; /* Deep blue for timestamps */
+  }
+  
+  .log-message {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #3d52a0; /* Deep blue for log messages */
+    margin-top: 0.25rem;
+  }
+  
+  /* Keyframes for Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes bounceIn {
+    0% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    50% {
+      transform: scale(1.1);
+      opacity: 0.9;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideUp {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .logs-list-container {
+      padding: 1rem;
+    }
+  
+    .page-title {
+      font-size: 2rem;
+    }
+  }
+  

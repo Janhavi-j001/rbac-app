@@ -1,63 +1,140 @@
-import React, { useState } from "react";
-import FrontPage from "./pages/FrontPage";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"; // Import styles
-import Navbar from "./components/Dashboard/Navbar";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import AdminDashboard from "./pages/Admin/AdminDashboard";
+import ProjectLeaderDashboard from "./pages/ProjectLeader/ProjectLeaderDashboard";
+import TeamMemberDashboard from "./pages/TeamMember/TeamMemberDashboard";
+import FrontPage from "./pages/Shared/FrontPage";
 import Login from "./components/Auth/Login";
 import Signup from "./components/Auth/Signup";
-import Home from "./pages/Home";
-import ActivityLogs from "./pages/ActivityLogs";
-import AuditLogs from "./pages/AuditLogs";
-import Teams from "./pages/Teams";
-import Projects from "./pages/Projects";
-import Users from "./pages/Users";
-import Permissions from "./pages/Permissions";
-import Settings from "./pages/Settings";
-import NotFound from "./pages/NotFound";
-import Roles from "./pages/Roles";
+import Logout from "./pages/Shared/Logout";
 import ProtectedRoute from "./components/ProtectedRoute";
-import "./App.css";
+import ManageRoles from "./pages/Admin/ManageRoles";
+import ManagePermissions from "./pages/Admin/ManagePermissions";
+import ViewLogs from "./pages/Admin/ViewLogs";
+import ManageProjects from "./pages/ProjectLeader/ManageProjects";
+import AuditLogs from "./pages/ProjectLeader/ViewAuditLogs";
+import TeamManagement from "./pages/ProjectLeader/TeamManagement";
+import ViewProjects from "./pages/TeamMember/ViewProjects";
+import ViewTeams from "./pages/TeamMember/ViewTeams";
+import ProSet from "./pages/ProjectLeader/Settings";
+import TeamSet from "../src/pages/TeamMember/Settings";
+import AdminSet from "./pages/Admin/Settings";
 
 const App = () => {
-  // Initialize darkMode based on localStorage value or default to false
-  
-  const [isAuthenticated, setIsAuthenticated] = useState(false); // Track authentication status
-  
-
-  const handleLogin = () => {
-    setIsAuthenticated(true); // Set authentication state to true after login
-  };
-
-  const handleLogout = () => {
-    setIsAuthenticated(false); // Reset authentication state on logout
-  };
-
   return (
     <Router>
-      
-        {/* Display Navbar only when authenticated */}
-        {isAuthenticated && <Navbar />}
-        
-        
-        <ToastContainer position="top-right" autoClose={3000} /> {/* Toastify */}
-        <Routes>
-          <Route path="/" element={<FrontPage />} />
-          <Route path="/" element={<Navigate to="/login" />} />
-          <Route path="/login" element={<Login onLogin={handleLogin} />} />
-          <Route path="/signup" element={<Signup onSignup={handleLogout} />} />
-          <Route path="/dashboard" element={<ProtectedRoute element={<Home />} />} />
-          <Route path="/projects" element={<ProtectedRoute element={<Projects />} />} />
-          <Route path="/activity-logs" element={<ProtectedRoute element={<ActivityLogs />} />} />
-          <Route path="/audit-logs" element={<ProtectedRoute element={<AuditLogs />} />} />
-          <Route path="/teams" element={<ProtectedRoute element={<Teams />} />} />
-          <Route path="/settings" element={<ProtectedRoute element={<Settings />} />} />
-          <Route path="/users" element={<ProtectedRoute element={<Users />} />} />
-          <Route path="/permissions" element={<ProtectedRoute element={<Permissions />} />} />
-          <Route path="/roles" element={<ProtectedRoute element={<Roles />} />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-     
+      <Routes>
+        {/* Public Routes */}
+        <Route path="/" element={<FrontPage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+
+        {/* Role-Based Protected Routes */}
+        {/* Admin Routes */}
+        <Route
+          path="/admin/dashboard"
+          element={
+            <ProtectedRoute element={<AdminDashboard />} allowedRoles={["Admin"]} />
+          }
+        />
+        <Route
+          path="/admin/manage-roles"
+          element={
+            <ProtectedRoute element={<ManageRoles />} allowedRoles={["Admin"]} />
+          }
+        />
+        <Route
+          path="/admin/manage-permissions"
+          element={
+            <ProtectedRoute element={<ManagePermissions />} allowedRoles={["Admin"]} />
+          }
+        />
+        <Route
+          path="/admin/view-logs"
+          element={<ProtectedRoute element={<ViewLogs />} allowedRoles={["Admin"]} />}
+        />
+        <Route
+          path="/admin/settings"
+          element={<ProtectedRoute element={<AdminSet />} allowedRoles={["Admin"]} />}
+        />
+
+        {/* Project Leader Routes */}
+        <Route
+          path="/project-leader/dashboard"
+          element={
+            <ProtectedRoute
+              element={<ProjectLeaderDashboard />}
+              allowedRoles={["ProjectLeader"]}
+            />
+          }
+        />
+        <Route
+          path="/project-leader/manage-projects"
+          element={
+            <ProtectedRoute
+              element={<ManageProjects />}
+              allowedRoles={["ProjectLeader"]}
+            />
+          }
+        />
+        <Route
+          path="/project-leader/audit-logs"
+          element={
+            <ProtectedRoute element={<AuditLogs />} allowedRoles={["ProjectLeader"]} />
+          }
+        />
+        <Route
+          path="/project-leader/team-management"
+          element={
+            <ProtectedRoute
+              element={<TeamManagement />}
+              allowedRoles={["ProjectLeader"]}
+            />
+          }
+        />
+        <Route
+          path="/project-leader/settings"
+          element={
+            <ProtectedRoute element={<ProSet/>} allowedRoles={["ProjectLeader"]} />
+          }
+        />
+
+        {/* Team Member Routes */}
+        <Route
+          path="/team-member/dashboard"
+          element={
+            <ProtectedRoute
+              element={<TeamMemberDashboard />}
+              allowedRoles={["TeamMember"]}
+            />
+          }
+        />
+        <Route
+          path="/team-member/view-projects"
+          element={
+            <ProtectedRoute element={<ViewProjects />} allowedRoles={["TeamMember"]} />
+          }
+        />
+        <Route
+          path="/team-member/view-teams"
+          element={
+            <ProtectedRoute element={<ViewTeams />} allowedRoles={["TeamMember"]} />
+          }
+        />
+        <Route
+          path="/team-member/settings"
+          element={<ProtectedRoute element={<TeamSet />} allowedRoles={["TeamMember"]} />}
+        />
+
+        {/* Shared Routes */}
+        <Route
+          path="/logout"
+          element={<ProtectedRoute element={<Logout />} allowedRoles={["Admin", "ProjectLeader", "TeamMember"]} />}
+        />
+
+        {/* Catch-All Route */}
+        <Route path="*" element={<h1>404 - Page Not Found</h1>} />
+      </Routes>
     </Router>
   );
 };

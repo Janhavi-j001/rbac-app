@@ -1,19 +1,29 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { isAuthenticated } from "../utils/auth"; // Ensure this utility is implemented correctly
+import { isAuthenticated, getCurrentUser } from "../utils/auth";
 
 /**
- * ProtectedRoute component to restrict access to authenticated users.
+ * ProtectedRoute component to handle authentication and role-based access control.
  *
  * @param {Object} props
- * @param {React.Component} props.element - The component to render if the user is authenticated.
+ * @param {React.ReactNode} props.element - The component to render if access is authorized.
+ * @param {Array<string>} props.allowedRoles - Roles allowed to access this route.
  */
-const ProtectedRoute = ({ element }) => {
-  // Check if the user is authenticated
-  const auth = isAuthenticated();
+const ProtectedRoute = ({ element, allowedRoles }) => {
+  const user = getCurrentUser();
 
-  // Redirect to login if not authenticated
-  return auth ? element : <Navigate to="/login" replace />;
+  // Redirect to login if the user is not authenticated
+  if (!isAuthenticated()) {
+    return <Navigate to="/login" replace />;
+  }
+
+  // Redirect to unauthorized page if the user role is not allowed
+  if (allowedRoles && (!user || !allowedRoles.includes(user.role))) {
+    return <Navigate to="/unauthorized" replace />;
+  }
+
+  // Render the component if authenticated and authorized
+  return element;
 };
 
 export default ProtectedRoute;

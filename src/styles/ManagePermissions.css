@@ -1,0 +1,121 @@
+/* Container Styling */
+.manage-permissions-container {
+    background-color: #f6f5fa;
+    min-height: 100vh;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Arial", sans-serif;
+  }
+  
+  /* Title Styling */
+  .page-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #3d52a0;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  /* Permissions List Container */
+  .permissions-list-container {
+    width: 100%;
+    max-width: 600px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 1.5rem;
+  }
+  
+  .permissions-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .permission-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to right, #7f8cfa, #a29bfe);
+    color: #fff;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease;
+  }
+  
+  .permission-item:hover {
+    background: linear-gradient(to right, #5c6bc0, #7986cb);
+  }
+  
+  .permission-name {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  /* Toggle Switch Styling */
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 10px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+  }
+  
+  input:checked + .slider {
+    background-color: #4caf50;
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(20px);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .permissions-list-container {
+      padding: 1rem;
+    }
+  
+    .permission-item {
+      flex-direction: column;
+      text-align: center;
+      padding: 1rem;
+    }
+  
+    .page-title {
+      font-size: 2rem;
+    }
+  }
+  

@@ -1,125 +1,144 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import { saveUser } from "../../utils/auth";
-import signup from "../../imgs/signup.svg";
-import "../../styles/page.css"; // Import the CSS file
+import signupImage from "../../imgs/signup.svg"; // Adjust the image path as needed
+import "../../styles/Signup.css" ;// Include the styling provided
 
 const Signup = () => {
-  const [name, setName] = useState(""); // Add name state
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [role, setRole] = useState(""); // Add role state
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    role: "",
+  });
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleSignup = (e) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
+    const { name, email, password, confirmPassword, role } = formData;
 
-    // Ensure passwords match
+    if (!name || !email || !password || !confirmPassword || !role) {
+      setError("All fields are required.");
+      return;
+    }
+
     if (password !== confirmPassword) {
-      toast.error("Passwords do not match!");
+      setError("Passwords do not match.");
       return;
     }
 
-    // Ensure name and role are selected
-    if (!name || !role) {
-      toast.error("Please fill in all fields.");
-      return;
-    }
+    const isSaved = saveUser({ email, password, role });
 
-    // Save the user to the database or local storage
-    saveUser({ name, email, password, role });
-    toast.success("Signup successful! Please login.");
-    navigate("/login"); // Redirect to login page
+    if (isSaved) {
+      alert("Signup successful! Please login to continue.");
+      navigate("/login");
+    } else {
+      setError("User already exists. Please use a different email.");
+    }
   };
 
   return (
-    <div className="signup-page-container">
+    <div className="page-container">
       {/* Header Section */}
       <div className="signup-header">
-        <h1 className="signup-title">Create Your Account</h1>
-        <p className="signup-subtitle">Join us to simplify your project management workflow!</p>
+        <h2 className="signup-title">Sign Up</h2>
+        <p className="signup-subtitle">
+          Create an account to simplify your project management workflow!
+        </p>
       </div>
 
+      {/* Content Section */}
       <div className="signup-content">
         {/* Image Section */}
         <div className="signup-image-container">
-          <img src={signup} alt="signup" className="signup-image" />
+          <img
+            src={signupImage}
+            alt="Signup Illustration"
+            className="signup-image"
+          />
         </div>
 
         {/* Form Section */}
         <div className="signup-form-container">
-          <h2 className="form-title">Sign Up</h2>
-          <form onSubmit={handleSignup} className="signup-form">
+          <h3 className="form-title">Create Your Account</h3>
+          {error && <p className="error-message">{error}</p>}
+          <form onSubmit={handleSubmit} className="signup-form">
             <div className="form-group">
-              <label>Name</label>
+              <label htmlFor="name">Name</label>
               <input
-                style={{color: "black"}}
                 type="text"
+                name="name"
+                id="name"
+                value={formData.name}
+                onChange={handleChange}
                 className="form-input"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
                 required
               />
             </div>
-
             <div className="form-group">
-              <label>Email</label>
+              <label htmlFor="email">Email</label>
               <input
-                style={{color: "black"}}
                 type="email"
+                name="email"
+                id="email"
+                value={formData.email}
+                onChange={handleChange}
                 className="form-input"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
             <div className="form-group">
-              <label>Password</label>
+              <label htmlFor="password">Password</label>
               <input
-                style={{color: "black"}}
                 type="password"
+                name="password"
+                id="password"
+                value={formData.password}
+                onChange={handleChange}
                 className="form-input"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
                 required
               />
             </div>
             <div className="form-group">
-              <label>Confirm Password</label>
+              <label htmlFor="confirmPassword">Confirm Password</label>
               <input
-                style={{color: "black"}}
                 type="password"
+                name="confirmPassword"
+                id="confirmPassword"
+                value={formData.confirmPassword}
+                onChange={handleChange}
                 className="form-input"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
                 required
               />
             </div>
-
-            {/* Role Dropdown */}
             <div className="form-group">
-              <label>Role</label>
+              <label htmlFor="role">Role</label>
               <select
-                style={{color: "black"}}
+                name="role"
+                id="role"
+                value={formData.role}
+                onChange={handleChange}
                 className="form-input"
-                value={role}
-                onChange={(e) => setRole(e.target.value)}
                 required
               >
                 <option value="">Select Role</option>
-                <option value="admin">Admin</option>
-                <option value="team_member">Team Member</option>
-                <option value="project_leader">Project Leader</option>
+                <option value="Admin">Admin</option>
+                <option value="ProjectLeader">Project Leader</option>
+                <option value="TeamMember">Team Member</option>
               </select>
             </div>
-
             <button type="submit" className="signup-button">
               Sign Up
             </button>
           </form>
-          <p className="form-footer">
+          <div className="form-footer">
             Already have an account?{" "}
             <span
               className="form-link"
@@ -127,14 +146,15 @@ const Signup = () => {
             >
               Login here
             </span>
-          </p>
+          </div>
         </div>
       </div>
 
       {/* Footer Section */}
-      <footer className="signup-footer">
-        <p>© {new Date().getFullYear()} TeamHub. Secure and simplified project management.</p>
-      </footer>
+      <div className="signup-footer">
+        &copy; {new Date().getFullYear()} Project Management Platform. All
+        rights reserved.
+      </div>
     </div>
   );
 };

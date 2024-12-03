@@ -1,70 +1,95 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import { loginUser } from "../../utils/auth";
-import login from "../../imgs/login.svg";
-import "../../styles/page.css";
+import { loginUser, getCurrentUser } from "../../utils/auth";
+import loginImage from "../../imgs/login.svg"; // Adjust the image path as needed
+import "../../styles/Signup.css" ; // Reusable CSS for Login and Signup
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
-    if (loginUser(email, password)) {
-      toast.success("Login successful!");
-      navigate("/dashboard");
+
+    const isLoggedIn = loginUser(email, password);
+
+    if (isLoggedIn) {
+      const currentUser = getCurrentUser();
+
+      if (currentUser && currentUser.role) {
+        switch (currentUser.role) {
+          case "Admin":
+            navigate("/admin/dashboard");
+            break;
+          case "ProjectLeader":
+            navigate("/project-leader/dashboard");
+            break;
+          case "TeamMember":
+            navigate("/team-member/dashboard");
+            break;
+          default:
+            setError("Role not recognized. Please contact support.");
+            break;
+        }
+      } else {
+        setError("Failed to retrieve user details. Try again.");
+      }
     } else {
-      toast.error("Invalid credentials. Please try again.");
+      setError("Invalid email or password. Please try again.");
     }
   };
 
   return (
-    <div className="login-page-container">
+    <div className="page-container">
       {/* Header Section */}
       <div className="login-header">
-        <h1 className="login-title">Welcome Back!</h1>
+        <h2 className="login-title">Welcome Back!</h2>
         <p className="login-subtitle">Login to access your dashboard and manage your projects.</p>
       </div>
 
+      {/* Content Section */}
       <div className="login-content">
         {/* Image Section */}
         <div className="login-image-container">
-          <img src={login} alt="login" className="login-image" />
+          <img src={loginImage} alt="Login Illustration" className="login-image" />
         </div>
 
         {/* Form Section */}
         <div className="login-form-container">
-          <h2 className="form-title">Login</h2>
+          <h3 className="form-title">Login</h3>
+          {error && <p className="error-message">{error}</p>}
           <form onSubmit={handleLogin} className="login-form">
             <div className="form-group">
-              <label>Email</label>
+              <label htmlFor="email">Email</label>
               <input
-                style={{color: "black"}}
                 type="email"
-                className="form-input"
+                id="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                className="form-input"
                 required
               />
             </div>
+
             <div className="form-group">
-              <label>Password</label>
+              <label htmlFor="password">Password</label>
               <input
-                style={{color: "black"}}
                 type="password"
-                className="form-input"
+                id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                className="form-input"
                 required
               />
             </div>
+
             <button type="submit" className="login-button">
               Login
             </button>
           </form>
-          <p className="form-footer">
+          <div className="form-footer">
             Don't have an account?{" "}
             <span
               className="form-link"
@@ -72,14 +97,14 @@ const Login = () => {
             >
               Sign Up here
             </span>
-          </p>
+          </div>
         </div>
       </div>
 
       {/* Footer Section */}
-      <footer className="login-footer">
-        <p>© {new Date().getFullYear()} TeamHub. All rights reserved.</p>
-      </footer>
+      <div className="login-footer">
+        &copy; {new Date().getFullYear()} Project Management Platform. All rights reserved.
+      </div>
     </div>
   );
 };

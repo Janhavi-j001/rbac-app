@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import teams from "../imgs/team-colab.svg";
-import "./FrontPage.css";
+import teams from "../../imgs/team-colab.svg";
+import "../../styles/FrontPage.css";
 
 const FrontPage = () => {
   const navigate = useNavigate();

@@ -1,39 +1,45 @@
-/**
- * Save a new user to localStorage.
- * @param {object} user - The user object containing details like email and password.
- */
-export const saveUser = (user) => {
-  try {
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    users.push(user);
-    localStorage.setItem('users', JSON.stringify(users));
-  } catch (error) {
-    console.error(`Error saving user to localStorage: ${error}`);
+// auth.js
+
+// Save user during signup
+export const saveUser = ({ email, password, role }) => {
+  const users = JSON.parse(localStorage.getItem("users")) || [];
+  const userExists = users.some((u) => u.email === email);
+
+  if (userExists) {
+    alert("User already exists. Please login.");
+    return false;
   }
+
+  // Add the new user
+  users.push({ email, password, role });
+  localStorage.setItem("users", JSON.stringify(users));
+  return true;
 };
 
-/**
- * Other functions already defined here...
- */
-
+// Log in user
 export const loginUser = (email, password) => {
-  const users = JSON.parse(localStorage.getItem('users')) || [];
-  const user = users.find((user) => user.email === email && user.password === password);
+  const users = JSON.parse(localStorage.getItem("users")) || [];
+  const user = users.find((u) => u.email === email && u.password === password);
+
   if (user) {
-    localStorage.setItem('currentUser', JSON.stringify(user));
+    localStorage.setItem("currentUser", JSON.stringify(user)); // Save logged-in user
     return true;
   }
-  return false;
+  return false; // Invalid login credentials
 };
 
-export const logoutUser = () => {
-  localStorage.removeItem('currentUser');
-};
-
+// Get current user
 export const getCurrentUser = () => {
-  return JSON.parse(localStorage.getItem('currentUser'));
+  return JSON.parse(localStorage.getItem("currentUser")); // Retrieve current user
 };
+
+// Clear current user (Logout)
+export const logoutUser = () => {
+  localStorage.removeItem("currentUser");
+};
+// auth.js
 
 export const isAuthenticated = () => {
-  return !!localStorage.getItem('currentUser');
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  return !!currentUser; // Returns true if a user is logged in, otherwise false
 };

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import "./ActivityLogs.css";
+import "../../styles/Settings.css";
+import { Link } from "react-router-dom";
 
 const Settings = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -69,6 +70,10 @@ const Settings = () => {
 
   return (
     <div className={`settings-container ${darkMode ? "dark" : ""}`}>
+        <button className="back-button">
+        <Link to="/admin/dashboard" className="back-link">Back</Link>
+      </button>
+
       <h1 className="settings-title">Settings</h1>
 
       {/* Account Settings */}
