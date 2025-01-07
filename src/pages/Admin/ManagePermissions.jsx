@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../../styles/ManagePermissions.css";
+import { Link } from "react-router-dom";
 
 const permissionsList = [
   { id: 1, name: "View Projects" },
@@ -21,6 +22,9 @@ const ManagePermissions = () => {
 
   return (
     <div className="manage-permissions-container">
+      <button className="back-button">
+        <Link to="/admin/dashboard" className="back-link">Back</Link>
+      </button>
       <h1 className="page-title">Manage Permissions</h1>
 
       <div className="permissions-list-container">

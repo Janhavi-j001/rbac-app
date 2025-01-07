@@ -5,45 +5,55 @@ body {
   font-family: Arial, sans-serif;
 }
 
-.min-h-screen {
-  min-height: 150vh;
+.dashboard-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #ede8f5; /* Light background */
+  color: #333; /* Dark text */
 }
 
-.bg-light-bg {
-  background-color: #ede8f5; /* Light background color */
+.dashboard-header {
+  background-color: #3d52a0; /* Dark blue */
+  color: #ede8f5; /* Light text */
+  text-align: center;
+  padding: 15px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.text-dark-text {
-  color: #333; /* Dark text color */
+.text-lg {
+  font-size: 1.125rem;
+  color: #555; /* Slightly darker gray for paragraph text */
+  text-align: center;
+  margin: 20px auto;
+  max-width: 80%;
 }
 
 /* Sidebar Styling */
 .sidebar {
   width: 220px;
-  background-color: #7091e6; /* Dark blue background for the sidebar */
-  height: 100%;
+  background-color: #7091e6; /* Sidebar background */
+  height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
   padding: 20px;
-  color: white;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
-.sidebar ul {
+.sidebar-links {
   list-style: none;
   padding: 0;
   margin: 0;
   width: 100%;
 }
 
-.sidebar li {
-  margin-bottom: 20px;
-}
-
-.sidebar li a {
+.sidebar-link {
   text-decoration: none;
   color: white;
   display: block;
@@ -53,58 +63,45 @@ body {
   font-size: 1rem;
   font-weight: bold;
   background-color: #3d52a0; /* Slightly lighter blue */
+  margin-bottom: 15px;
   transition: background-color 0.3s ease;
 }
 
-.sidebar li a:hover {
-  background-color: #8697c4; /* Lighter shade on hover */
+.sidebar-link:hover {
+  background-color: #8697c4; /* Lighter blue on hover */
+}
+
+.logout {
+  background-color: #ff5f5f; /* Red for logout */
+}
+
+.logout:hover {
+  background-color: #ff8a8a; /* Lighter red on hover */
 }
 
 /* Main Content Styling */
-.main-content {
-  margin-left: 240px; /* Adjust to align with the sidebar width */
+.dashboard-content {
+  margin-left: 240px; /* Sidebar width */
   padding: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
 }
 
-/* Header Section */
-.dashboard-header {
-  background-color: #3d52a0;
-  color: #ede8f5;
-  text-align: center;
-  padding: 15px 90px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.dashboard-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
 }
 
-.dashboard-header {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
-.div p {
-  font-size: 1.2rem;
-  font-weight: 300;
-  margin-bottom: 30px;
-}
-
-.text-lg {
-  font-size: 1.125rem;
-  color: #555; /* Slightly darker gray for the paragraph text */
-  margin-bottom: 20px;
-}
-
-/* Dashboard Image Styling */
 .dashboard-image {
   max-width: 500px;
-  padding-top: 25px;
   animation: fadeIn 1.5s ease-in;
 }
 
+/* Image Animation */
 @keyframes fadeIn {
   from {
     opacity: 0;

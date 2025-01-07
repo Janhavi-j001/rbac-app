@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../../styles/AdminDashboard.css";
+import "../../styles/ProjectLeaderDashboard.css"
 import img from "../../imgs/dashboard.svg";
 
 const ProjectLeaderDashboard = () => {
   return (
     <div className="min-h-screen bg-light-bg text-dark-text">
+      {/* Sidebar Section */}
       <div className="sidebar">
         <ul>
           <li>
@@ -25,9 +26,11 @@ const ProjectLeaderDashboard = () => {
           </li>
         </ul>
       </div>
+
+      {/* Main Content Section */}
       <div className="main-content">
         <div className="dashboard-header">Project Leader Dashboard</div>
-        <p className="text-lg mb-6">
+        <p className="text-lg">
           Welcome to the Project Leader Dashboard! Use the links on the sidebar
           to manage your responsibilities.
         </p>

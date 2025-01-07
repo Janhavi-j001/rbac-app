@@ -7,11 +7,11 @@ const TeamMemberDashboard = () => {
   return (
     <div className="dashboard-container">
       {/* Top Header */}
-      <div className="dashboard-header">Project Leader Dashboard</div>
-        <p className="text-lg mb-6">
-          Welcome to the Project Leader Dashboard! Use the links on the sidebar
-          to manage your responsibilities.
-        </p>
+      <div className="dashboard-header">Team Member Dashboard</div>
+      <p className="text-lg">
+        Welcome to the Team Member Dashboard! Use the links on the sidebar to
+        manage your responsibilities.
+      </p>
 
       {/* Content Area */}
       <div className="dashboard-content">
@@ -43,13 +43,11 @@ const TeamMemberDashboard = () => {
 
         {/* Main Content */}
         <main className="dashboard-main">
-          <div className="img">
-            <img
-              src={dashboard}
-              alt="Dashboard Illustration"
-              className="dashboard-image"
-            />
-          </div>
+          <img
+            src={dashboard}
+            alt="Dashboard Illustration"
+            className="dashboard-image"
+          />
         </main>
       </div>
     </div>
