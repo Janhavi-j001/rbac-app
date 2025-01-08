@@ -23,6 +23,9 @@ This project is a React-based web application that implements **role-based acces
 5. **UI Enhancements**  
    - Clean and responsive design for better user experience.
 ---
+## Demo
+
+Check out the live demo of the app [here](https://rbac-tool.netlify.app/).
 
 ## **Installation**
 
@@ -33,8 +36,8 @@ This project is a React-based web application that implements **role-based acces
 ### **Steps to Set Up**
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/role-based-access-project.git
-   cd role-based-access-project
+   git clone https://github.com/janhavi-j001/rbac-app.git
+   cd rbac-app
    ```
 2. Install dependencies:
    ```bash
