@@ -118,15 +118,15 @@ const TeamMemberDashboard = () => {
               </p>
               <div className="space-y-3">
                 <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                  <span className="font-medium">Today's Tasks</span>
+                  <span className="font-medium text-gray-700">Today's Tasks</span>
                   <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">3 Pending</span>
                 </div>
                 <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                  <span className="font-medium">This Week's Goals</span>
+                  <span className="font-medium text-gray-700">This Week's Goals</span>
                   <span className="text-gray-600">75% Complete</span>
                 </div>
                 <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                  <span className="font-medium">Team Messages</span>
+                  <span className="font-medium text-gray-700">Team Messages</span>
                   <span className="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm font-medium">2 New</span>
                 </div>
               </div>
@@ -160,8 +160,8 @@ const TeamMemberDashboard = () => {
                 >
                   <div className="text-center">
                     <div className="text-3xl mb-3">{item.icon}</div>
-                    <h3 className="font-semibold">{item.label}</h3>
-                    <p className="text-sm opacity-75 mt-1 group-hover:opacity-100">
+                    <h3 className="font-semibold text-gray-800 group-hover:text-white">{item.label}</h3>
+                    <p className="text-sm text-gray-600 group-hover:text-gray-200 mt-1">
                       Click to view
                     </p>
                   </div>

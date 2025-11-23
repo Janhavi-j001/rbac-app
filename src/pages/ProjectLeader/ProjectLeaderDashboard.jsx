@@ -119,15 +119,15 @@ const ProjectLeaderDashboard = () => {
               </p>
               <div className="space-y-3">
                 <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                  <span className="font-medium">Projects in Progress</span>
+                  <span className="font-medium text-gray-700">Projects in Progress</span>
                   <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">8 Active</span>
                 </div>
                 <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                  <span className="font-medium">Pending Reviews</span>
+                  <span className="font-medium text-gray-700">Pending Reviews</span>
                   <span className="text-gray-600">5 items</span>
                 </div>
                 <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                  <span className="font-medium">Team Availability</span>
+                  <span className="font-medium text-gray-700">Team Availability</span>
                   <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">85% Available</span>
                 </div>
               </div>
@@ -161,8 +161,8 @@ const ProjectLeaderDashboard = () => {
                 >
                   <div className="text-center">
                     <div className="text-3xl mb-3">{item.icon}</div>
-                    <h3 className="font-semibold">{item.label}</h3>
-                    <p className="text-sm opacity-75 mt-1 group-hover:opacity-100">
+                    <h3 className="font-semibold text-gray-800 group-hover:text-white">{item.label}</h3>
+                    <p className="text-sm text-gray-600 group-hover:text-gray-200 mt-1">
                       Click to access
                     </p>
                   </div>

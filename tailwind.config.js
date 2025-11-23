@@ -13,7 +13,7 @@ module.exports = {
         'text-muted': '#8697c4',
       },
       fontFamily: {
-        sans: ['Inter', 'Arial', 'sans-serif'],
+        sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'sans-serif'],
       },
       boxShadow: {
         'soft': '0 4px 20px rgba(61, 82, 160, 0.1)',
@@ -23,4 +23,4 @@ module.exports = {
     },
   },
   plugins: [],
-};}
+};
