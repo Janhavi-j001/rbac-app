@@ -1,0 +1,112 @@
+/* General Styling */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.dashboard-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #ede8f5; /* Light background */
+  color: #333; /* Dark text */
+}
+
+.dashboard-header {
+  background-color: #3d52a0; /* Dark blue */
+  color: #ede8f5; /* Light text */
+  text-align: center;
+  padding: 15px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.text-lg {
+  font-size: 1.125rem;
+  color: #555; /* Slightly darker gray for paragraph text */
+  text-align: center;
+  margin: 20px auto;
+  max-width: 80%;
+}
+
+/* Sidebar Styling */
+.sidebar {
+  width: 220px;
+  background-color: #7091e6; /* Sidebar background */
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.sidebar-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.sidebar-link {
+  text-decoration: none;
+  color: white;
+  display: block;
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: #3d52a0; /* Slightly lighter blue */
+  margin-bottom: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar-link:hover {
+  background-color: #8697c4; /* Lighter blue on hover */
+}
+
+.logout {
+  background-color: #ff5f5f; /* Red for logout */
+}
+
+.logout:hover {
+  background-color: #ff8a8a; /* Lighter red on hover */
+}
+
+/* Main Content Styling */
+.dashboard-content {
+  margin-left: 240px; /* Sidebar width */
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.dashboard-image {
+  max-width: 500px;
+  animation: fadeIn 1.5s ease-in;
+}
+
+/* Image Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
