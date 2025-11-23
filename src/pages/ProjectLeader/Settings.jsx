@@ -87,6 +87,13 @@ const Settings = () => {
 
   const handlePreferenceUpdate = (field, value) => {
     setPreferences(prev => ({ ...prev, [field]: value }));
+    if (field === 'theme') {
+      if (value === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    }
   };
 
   const handlePasswordChange = (e) => {
@@ -120,7 +127,7 @@ const Settings = () => {
   );
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className={`min-h-screen bg-background ${preferences.theme === 'dark' ? 'dark' : ''}`}>
       {/* Header */}
       <div className="bg-white shadow-soft border-b border-gray-100">
         <div className="container mx-auto px-6 py-6">
